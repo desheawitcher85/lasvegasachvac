@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import "./globals.css";
+import Script from "next/script";
 import TopBar from "@/components/layout/TopBar";
 import NavBar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
@@ -47,6 +48,19 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <StickyCallButton />
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-PRVPXE23CH"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PRVPXE23CH');
+          `}
+        </Script>
       </body>
     </html>
   );
