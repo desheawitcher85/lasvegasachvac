@@ -7,11 +7,12 @@ export function localBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "HVACBusiness",
     "name": siteConfig.brandName,
-    "image": `${baseUrl}/logo.png`,
+    "image": `${baseUrl}/las-vegas-skyline.jpg`,
+    "logo": `${baseUrl}/logo.svg`,
     "@id": baseUrl,
     "url": baseUrl,
     "telephone": siteConfig.phoneRaw,
-    "priceRange": "$$",
+    "priceRange": "$",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": siteConfig.address.city,
@@ -36,6 +37,8 @@ export function localBusinessSchema() {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": siteConfig.reviewRating.toString(),
+      "bestRating": "5",
+      "worstRating": "1",
       "reviewCount": siteConfig.reviewCount.toString(),
     },
   };
@@ -93,7 +96,7 @@ export function articleSchema(opts: {
       "name": siteConfig.brandName,
       "logo": {
         "@type": "ImageObject",
-        "url": `${baseUrl}/logo.png`,
+        "url": `${baseUrl}/logo.svg`,
       },
     },
     "datePublished": opts.datePublished,
