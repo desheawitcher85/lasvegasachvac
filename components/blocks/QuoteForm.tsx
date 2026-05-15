@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const baseSchema = z.object({
   name: z.string().min(2, "Please enter your name"),
@@ -27,7 +28,7 @@ interface QuoteFormProps {
 }
 
 export default function QuoteForm({ source = "unknown", mode = "mini" }: QuoteFormProps) {
-  const [submitted, setSubmitted] = useState(false);
+  const router = useRouter();
   const [error, setError] = useState("");
 
   const schema = mode === "full" ? fullSchema : baseSchema;
@@ -49,19 +50,10 @@ export default function QuoteForm({ source = "unknown", mode = "mini" }: QuoteFo
         body: JSON.stringify({ ...data, source }),
       });
       if (!res.ok) throw new Error("Submission failed");
-      setSubmitted(true);
+      router.push("/thank-you/");
     } catch {
       setError("Something went wrong. Please call us directly.");
     }
-  }
-
-  if (submitted) {
-    return (
-      <div className="text-center py-6">
-        <p className="text-green-700 font-semibold text-lg mb-1">Got it. We&apos;ll call you shortly.</p>
-        <p className="text-gray-600 text-sm">Usually within 15 minutes during business hours.</p>
-      </div>
-    );
   }
 
   return (
