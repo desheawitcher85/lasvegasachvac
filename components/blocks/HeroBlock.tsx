@@ -8,7 +8,7 @@ export default function HeroBlock() {
       {/* Background image */}
       <Image
         src="/las-vegas-skyline.jpg"
-        alt="Las Vegas skyline at night"
+        alt="Las Vegas valley skyline - Vegas AC HVAC serves the entire Las Vegas metro area"
         fill
         priority
         className="object-cover object-center"

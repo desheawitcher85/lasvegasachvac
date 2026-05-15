@@ -49,7 +49,7 @@ export default function PageHeader({ h1, supporting, breadcrumbs, source, mapSrc
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Service area map"
+                  title={`${h1} - service area map`}
                 />
               </div>
             )}
